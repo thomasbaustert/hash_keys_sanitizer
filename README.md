@@ -18,14 +18,16 @@ Or install it yourself as:
 
 ## Usage
 
-`HashKeysSanitizer` is initialized with a whitelist as array, for example: 
+The sanitizer is initialized with the whitelist, for example: 
 
-    HashKeysSanitizer.new(whitelist: [:name, :email:, :age])
     HashKeysSanitizer.new(whitelist: [:name, address: [:street, :city, email: [:type]]])
 
-To sanitizes the hash call `sanitize` passing the hash:
+The whitelist contains the permitted (nested keys). In the example above the top level keys `name` 
+and `address` are permitted. For the key `address` the nested keys `street`, `city` and `email` are
+permitted. And for `email` the nested key `type` is permitted.
 
-    sanitizer = HashKeysSanitizer.new(whitelist: [:name, address: [:street, :city, email: [:type]]])
+To sanitizes the hash call `sanitize` and pass the hash:
+
     sanitized_params = sanitizer.sanitize(name: 'John', unknown: 'dummy', 
                                           address: { street: "John Street", unknown: "BANG",
                                                      email: { type: 'job', unknown: 'BANG' } })

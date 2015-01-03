@@ -7,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.version       = HashKeysSanitizer::VERSION
   spec.authors       = ["Thomas Baustert"]
   spec.email         = ["business@thomasbaustert.de"]
-  spec.summary       = %q{Parameter name validator}
-  spec.description   = %q{Parameter name validator}
+  spec.summary       = %q{Hash keys sanitizer}
+  spec.description   = %q{Sanitizes hash keys according to a whitelist}
   spec.homepage      = "https://github.com/thomasbuatsert/hash_keys_sanitizer"
   spec.license       = "MIT"
 
