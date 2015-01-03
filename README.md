@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/thomasbaustert/hash_keys_sanitizer.svg?branch=master)](https://travis-ci.org/thomasbaustert/hash_keys_sanitizer)
+
 # hash_keys_sanitizer
 
 Sanitizes a hash keys according to a whitelist.
