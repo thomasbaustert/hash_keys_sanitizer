@@ -19,6 +19,11 @@ describe HashKeysSanitizer do
         expect(filtered_params).to eq(name: 'John', address: { street: "John Street", email: { type: 'job' } })
       end
 
+      it "filters out all hash keys if none matches" do
+        filtered_params = sanitizer.sanitize(foo: 'John', bars: { xy: "John Street" })
+        expect(filtered_params).to eq({})
+      end
+
       it "does not modify original hash" do
         filtered_params = sanitizer.sanitize(raw_hash)
         expect(raw_hash).to eq(name: 'John', unknown: 'dummy', address: { street: "John Street", unknown: "BANG",

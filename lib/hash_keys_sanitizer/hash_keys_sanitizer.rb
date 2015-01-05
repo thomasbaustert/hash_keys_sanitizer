@@ -28,8 +28,10 @@ class HashKeysSanitizer
         # { address: [:street, :city, ...] }
         elsif entry.is_a?(Hash)
           key = entry.keys.first.to_sym
-          kept_params[key] ||= {}
-          sanitize_nesting(kept_params[key], entry.values.first, raw_parameters[key])
+          if raw_parameters.has_key?(key)
+            kept_params[key] ||= {}
+            sanitize_nesting(kept_params[key], entry.values.first, raw_parameters[key])
+          end
         else
           raise HashKeysSanitizerError, "Unsupported whitelist entry type #{entry.class}: #{entry.inspect}"
         end
